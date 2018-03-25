@@ -1,0 +1,17 @@
+---
+- name: Nginx setup
+  apt: pkg=nginx state=present update_cache=true
+  tags:
+    - nginx
+
+- name: Stop Nginx before updating config
+  service:
+    name: nginx
+    state: stopped
+  tags:
+    - nginx
+
+- name: Install NGINX configuration
+  copy: src=nginx/ dest=/etc/nginx/ owner=root group=root mode=0644
+  notify: restart nginx
+  tags: nginx

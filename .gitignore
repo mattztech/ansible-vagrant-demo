@@ -1,0 +1,43 @@
+# Doc artifacts
+docs/build
+docs/venv
+docs/html
+docs/doctrees
+
+crash.log
+
+# Ansible
+localinv.yml
+*.retry
+
+# Terraform
+.terraform
+.us_terraform/*
+*.us_terraform
+terraform.tfstate
+local.tfvars
+*.tfstate.backup
+
+# PID files generally, sshuttle specifically
+*.pid
+
+# Using PyCharm?
+.idea/.name
+.idea/encodings.xml
+.idea/infrastructure.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea
+
+# Using VIM?
+.*.swp
+.*.swo
+
+# docker mounts
+docker.ssh
+docker.aws
+
+# misc personal bits
+notes/

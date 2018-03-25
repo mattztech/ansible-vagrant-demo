@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  handlers:
+    - include: handlers/main.yml
+  tasks:
+
+    - name: Nginx setup
+      apt: pkg=nginx state=present update_cache=true
+
+    - name: Stop Nginx before updating config
+      service:
+        name: nginx
+        state: stopped
+
+    - name: Install NGINX configuration
+      copy: src=nginx/ dest=/etc/nginx/ owner=root group=root mode=0644
+      notify: restart nginx
+      tags: nginx_conf
+
+  handlers:
+    - name: restart nginx
+      service:
+        name=nginx
+        state=restarted
